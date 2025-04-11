@@ -7,12 +7,12 @@ interface IExamStruct {
   precision?: IPrecision;
 }
 
-interface ICourseStruct {
+export interface ICourseStruct {
   precision?: IPrecision;
   exams: Record<string, IExamStruct>;
 }
 
-interface IExamData {
+export interface IExamData {
   average: number;
   grades: number[];
 }
@@ -22,14 +22,14 @@ interface ICourseData {
   exams: Record<string, IExamData>;
 }
 
-interface IStoreData {
+export interface IStoreData {
   coursesStruct: Record<string, ICourseStruct>;
   grades: Record<string, ICourseData>;
 }
 
 interface IStoreActions {
   setGrade: (course: string, exam: string, idx: number, grade: number) => void;
-  updateGrades: (course: string) => void;
+  initGrades: () => void;
 }
 
 export type IStore = IStoreData & IStoreActions;

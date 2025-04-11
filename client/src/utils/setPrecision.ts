@@ -1,6 +1,11 @@
 import { IPrecision } from "./IPrecision";
 
-export const setPrecision = (value: number, precision?: IPrecision) => {
+export const setPrecision = (
+  value: number,
+  precision: IPrecision = {
+    decimals: 2,
+  }
+) => {
   if (!precision) return value;
   if (precision.round) {
     return Math.round(value);
