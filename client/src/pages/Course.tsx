@@ -1,7 +1,7 @@
 import { useStore } from "hooks/store/useStore";
 import { useParams } from "react-router";
 import { FinalGrade } from "../components/FinalGrade";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Input } from "../components/Input";
 
 const GradeInput = ({
@@ -111,8 +111,8 @@ export const Course = () => {
         {courseName}
       </h1>
 
-      <div className="w-full max-h-full">
-        <div className="flex flex-col items-center gap-5">
+      <div className="w-full h-full overflow-hidden">
+        <div className="flex flex-col items-center gap-5 ">
           {Object.keys(grades[courseName].exams).map((examName, idx) => (
             <Exam
               open={idx == active}

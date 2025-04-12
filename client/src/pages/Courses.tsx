@@ -7,9 +7,9 @@ const CourseItem = ({ name }: { name: string }) => {
   return (
     <Link
       to={"/courses/" + name}
-      className="grid grid-cols-[auto_80px] bg-gray-900 w-full h-30  border-neutral-500 border-[1px] rounded-2xl overflow-hidden"
+      className="grid grid-cols-[auto_80px] bg-gray-900 w-full h-20  border-neutral-500 border-[1px] rounded-2xl overflow-hidden"
     >
-      <div className="grid place-content-center border-neutral-500 border-[1px] text-2xl text-gray-300">
+      <div className="grid place-content-center border-r-neutral-500 border-r-[1px] text-2xl text-gray-300">
         {name}
       </div>
       <div className="grid place-content-center text-gray-200 text-2xl">

@@ -30,6 +30,8 @@ export interface IStoreData {
 interface IStoreActions {
   setGrade: (course: string, exam: string, idx: number, grade: number) => void;
   initGrades: () => void;
+  addCourseStructure: (name: string, course: ICourseStruct) => void;
+  deleteCourseStructure: (name: string) => void;
 }
 
 export type IStore = IStoreData & IStoreActions;
