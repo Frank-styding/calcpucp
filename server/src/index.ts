@@ -7,10 +7,13 @@ import { editCourse } from "./routers/editCourse";
 import { deleteCourse } from "./routers/deleteCourse";
 import { addCourse } from "./routers/addCourse";
 import { getCourses } from "./routers/getCourses";
+import bodyParser from "body-parser";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors());
 
 const PORT = process.env.PORT;
 

@@ -1,11 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import { AddIcon } from "src/components/icons/AddIcon";
-import { useStore } from "hooks/store/useStore";
+import { useGetCareers } from "src/hooks/useGetCareers/useGetCareers";
+import { useSearchCourse } from "src/hooks/useSearchCourse/useSearchCourse";
+import { ICourseStruct } from "src/hooks/useStore/IStore";
+import { useStore } from "src/hooks/useStore/useStore";
 
-export const CourseItem = ({ name }: { name: string }) => {
-  const deleteCourse = useStore((state) => state.deleteCourseStructure);
+export const CourseItem = ({
+  name,
+  course,
+}: {
+  name: string;
+  course: ICourseStruct;
+}) => {
+  const addCourse = useStore((state) => state.addCourseStructure);
+  const navegate = useNavigate();
   const onClick = () => {
-    //? fetch course and insert to store
-    //? /* deleteCourse(name); */
+    addCourse(name, course);
+    navegate("/settings");
   };
   return (
     <div className="w-full bg-gray-900 h-20 rounded-2xl border-gray-500 border-[1px] grid grid-cols-[auto_80px]">
@@ -42,7 +53,7 @@ const SelectCareer = ({
 }) => {
   return (
     <select
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value.replace("carrera", ""))}
       className={`
        bg-gray-800 outline-none text-center border-none text-gray-400 text-xl w-[80%] 
          rounded-lg block p-2 border-gray-500 border-[1px]
@@ -59,20 +70,25 @@ const SelectCareer = ({
 };
 
 export const AddCourse = () => {
+  const [setCourseName, setCareer, courses] = useSearchCourse();
+  const careers = useGetCareers();
   const onSelectCareer = (value: string) => {
-    console.log(value, "career");
+    setCareer(value);
   };
   const onChangeCourseName = (value: string) => {
-    console.log(value, "courseName");
+    setCourseName(value);
   };
+
   return (
     <div className="h-full w-full  bg-gray-800 grid grid-rows-[150px_auto]">
       <div className="flex flex-col gap-5 justify-center items-center bg-gray-900">
-        <SelectCareer onChange={onSelectCareer} options={["hola"]} />
+        <SelectCareer onChange={onSelectCareer} options={careers} />
         <Input onChange={onChangeCourseName} />
       </div>
-      <div className="flex p-10 justify-center">
-        <CourseItem name="hola" />
+      <div className="flex p-10 gap-5 items-center flex-col">
+        {courses.map((item) => (
+          <CourseItem name={item.name} course={item} key={item.name} />
+        ))}
       </div>
     </div>
   );

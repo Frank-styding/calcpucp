@@ -1,5 +1,5 @@
 import { DeleteIcon } from "src/components/icons/DeleteIcon";
-import { useStore } from "hooks/store/useStore";
+import { useStore } from "src/hooks/useStore/useStore";
 import { AddIcon } from "src/components/icons/AddIcon";
 import { Link } from "react-router-dom";
 
@@ -26,9 +26,9 @@ export const Settings = () => {
   const coursesStruct = useStore((state) => state.coursesStruct);
 
   return (
-    <div className="w-full h-full bg-gray-800 flex p-5 gap-10 relative hide-scroll">
+    <div className="w-full h-full bg-gray-800 flex p-5 flex-col gap-5 relative hide-scroll">
       {Object.keys(coursesStruct).map((courseName) => (
-        <CourseItem name={courseName} />
+        <CourseItem name={courseName} key={courseName} />
       ))}
       <Link
         to={"/addCourse"}

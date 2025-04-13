@@ -1,4 +1,4 @@
-import { useStore } from "hooks/store/useStore";
+import { useStore } from "src/hooks/useStore/useStore";
 import { useParams } from "react-router";
 import { FinalGrade } from "../components/FinalGrade";
 import { useState } from "react";

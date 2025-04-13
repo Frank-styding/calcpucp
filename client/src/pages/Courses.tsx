@@ -1,4 +1,4 @@
-import { useStore } from "hooks/store/useStore";
+import { useStore } from "src/hooks/useStore/useStore";
 import { Link } from "react-router-dom";
 
 const CourseItem = ({ name }: { name: string }) => {
@@ -24,7 +24,7 @@ export const Courses = () => {
 
   return (
     <div className="w-full h-full overflow-x-hidden hide-scroll overflow-y-scroll bg-gray-800">
-      <div className="flex flex-col gap-2 items-center p-5">
+      <div className="flex flex-col gap-5 items-center p-5">
         {Object.keys(data).map((courseName) => (
           <CourseItem name={courseName} key={courseName} />
         ))}
